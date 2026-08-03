@@ -1,0 +1,7 @@
+node_modules/
+dist/
+backend/.jwt_secret
+.env
+.env.local
+*.log
+.DS_Store

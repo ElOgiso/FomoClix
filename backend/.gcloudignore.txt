@@ -1,0 +1,18 @@
+# Exclude all node_modules directories
+node_modules/
+
+# Exclude the entire frontend project from the backend deploy
+frontend/
+
+# Exclude common files
+.git/
+.gitignore
+.env
+
+
+#### **Step 2: Re-Build the Docker Image (with the new `.gcloudignore`)**
+
+Now, in your `C:\Users\USER\zora-bot-service` terminal, run the build command. This will grab your new `index.js` and build it *correctly* using your `Dockerfile`.
+
+```bash
+gcloud builds submit --tag us-central1-docker.pkg.dev/zora-trader-v1/cloud-run-source-deploy/zora-trader-service

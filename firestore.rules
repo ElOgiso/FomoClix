@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    match /config/{docId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /settings/{docId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /targetUsers/{userId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /trades/{tradeId} {
+      allow read, update: if isAuthenticated();
+      allow create, delete: if true;
+    }
+
+    match /activityFeed/{activityId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /analytics/{docId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /users/{userId} {
+      allow read, write: if isAuthenticated() && request.auth.uid == userId;
+    }
+
+    match /_test_pings/{docId} {
+      allow read, write: if true;
+    }
+
+    match /{document=**} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}

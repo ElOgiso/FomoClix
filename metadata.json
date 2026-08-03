@@ -1,0 +1,6 @@
+{
+  "name": "FOMOCLIX Trading Engine",
+  "description": "FOMOCLIX AI Automated Sniper Engine, Live Data Scanner & Route Controls for Zora, Base, and Solana",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

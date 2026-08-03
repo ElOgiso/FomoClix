@@ -1,0 +1,22 @@
+{
+  "name": "zora-bot-service",
+  "main": "gateway.js",
+  "compatibility_date": "2026-01-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "containers": [
+    { "class_name": "ZoraBotContainer", "image": "./Dockerfile" }
+  ],
+  "durable_objects": {
+    "bindings": [{ "name": "ZORA_BOT", "class_name": "ZoraBotContainer" }]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["ZoraBotContainer"] }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "zora-bot-db",
+      "database_id": "a3931d4a-f555-411b-843a-bb82becb869a"
+    }
+  ]
+}

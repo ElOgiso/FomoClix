@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: Check if user is logged in
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // FIX: Allow Frontend to update Bot Config in BOTH possible paths
+    match /config/{docId} {
+      allow read, write: if isAuthenticated();
+    }
+    
+    match /settings/{docId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Allow Frontend to manage the Target User list
+    match /targetUsers/{userId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Allow Frontend to read trades for the dashboard and update status
+    match /trades/{tradeId} {
+      allow read, update: if isAuthenticated();
+      allow create, delete: if false; 
+    }
+
+    match /activityFeed/{activityId} {
+      allow read: if isAuthenticated();
+      allow write: if false; 
+    }
+
+    match /analytics/{docId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /users/{userId} {
+      allow read, write: if isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Backend private collections (Locked)
+    match /processedCasts/{docId} { allow read, write: if false; }
+    match /processedCoins/{docId} { allow read, write: if false; }
+    match /caches/{docId} { allow read, write: if false; }
+    match /processedTxHashes/{docId} { allow read, write: if false; }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

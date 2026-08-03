@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile and settings",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "primaryAddress": { "type": "string" },
+        "plan": { "type": "string" },
+        "subscriptionActive": { "type": "boolean" },
+        "onboardingComplete": { "type": "boolean" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Trade": {
+      "title": "Trade",
+      "description": "Trade record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "coin": { "type": "string" },
+        "status": { "type": "string" },
+        "boughtAt": { "type": "number" },
+        "soldAt": { "type": "number" }
+      }
+    },
+    "ActivityFeed": {
+      "title": "Activity Feed Item",
+      "description": "Activity event item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "coin": { "type": "string" },
+        "timestamp": { "type": "number" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile collection"
+    },
+    "/trades/{tradeId}": {
+      "schema": { "$ref": "#/entities/Trade" },
+      "description": "Trades collection"
+    },
+    "/activityFeed/{activityId}": {
+      "schema": { "$ref": "#/entities/ActivityFeed" },
+      "description": "Activity feed events"
+    }
+  }
+}

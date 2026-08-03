@@ -1,0 +1,29 @@
+{
+  "name": "zora-trader-service",
+  "version": "1.0.0",
+  "description": "Neynar webhook handler and Zora coin trading bot.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@base-org/account": "^2.5.1",
+    "@cloudflare/containers": "^0.3.7",
+    "@neynar/nodejs-sdk": "^2.0.0",
+    "@zoralabs/coins-sdk": "^0.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "ethers": "^6.15.0",
+    "express": "^4.19.2",
+    "express-list-endpoints": "^7.1.0",
+    "express-rate-limit": "^7.1.0",
+    "node-fetch": "^3.3.2",
+    "firebase-admin": "^12.0.0",
+    "sqlite3": "^5.1.7",
+    "viem": "^2.38.3",
+    "ws": "^8.18.0"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules
+.git
+.wrangler
+.firebase
+bot.db
+Frontend
+docs
+*.db
+*.log
+.env
+.env.production
+.deploy

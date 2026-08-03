@@ -1,0 +1,28 @@
+# Node.js
+**/node_modules/
+**/dist/
+**/.firebase/
+**/.antigravity/
+**/.vscode/
+
+# Local databases and locks
+**/*.db
+**/*.db-journal
+**/*.sqlite
+
+# Local secrets & configs
+**/.env
+**/.env.local
+**/.env.production
+**/.env.*.local
+!**/.env.example
+!**/.env.production.example
+**/key.json
+**/service-account.json
+**/token.txt
+**/.jwt_secret
+
+# System files & logs
+**/.DS_Store
+**/Thumbs.db
+**/*.log
